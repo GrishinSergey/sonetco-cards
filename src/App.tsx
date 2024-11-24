@@ -17,12 +17,20 @@ export function App() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleGenerateCollage = async () => {
-    if (!containerRef.current) return;
+    console.log('Button clicked'); // додамо для дебагу
+
+    if (!containerRef.current) {
+      console.log('No container ref'); // додамо для дебагу
+      return;
+    }
 
     try {
       const dataUrl = await htmlToImage.toPng(containerRef.current, {
         quality: 1.0,
+        width: 480,
       });
+
+      console.log('Image generated'); // додамо для дебагу
 
       const link = document.createElement('a');
       link.download = 'collage.png';
@@ -34,21 +42,21 @@ export function App() {
   };
 
   return (
-    <BrowserRouter basename="/sonetco-cards">
-      <ThemeProvider theme={theme}>
-        <Button
-          variant="contained"
-          onClick={handleGenerateCollage}
-          sx={{ position: 'fixed', bottom: 20, right: 20 }}
-        >
-          Згенерувати колаж
-        </Button>
+    <ThemeProvider theme={theme}>
+      <Button
+        variant="contained"
+        onClick={handleGenerateCollage}
+        sx={{ position: 'fixed', bottom: 20, right: 20, zIndex: 1000 }}
+      >
+        Згенерувати колаж
+      </Button>
 
+      <BrowserRouter basename="/sonetco-cards">
         <CenteredContainer ref={containerRef}>
           <CardGrid items={items} />
         </CenteredContainer>
-      </ThemeProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
