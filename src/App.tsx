@@ -34,7 +34,7 @@ export function App() {
   };
 
   return (
-    <BrowserRouter basename="/sonecko-cards">
+    <BrowserRouter basename="/sonetco-cards">
       <ThemeProvider theme={theme}>
         <Button
           variant="contained"

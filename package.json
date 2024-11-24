@@ -11,7 +11,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://GrishinSergey.github.io/soneco-cards/",
+  "homepage": "https://GrishinSergey.github.io/sonetco-cards/",
   "dependencies": {
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
