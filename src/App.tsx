@@ -5,6 +5,7 @@ import { CardGrid } from './CardGrid';
 import { BoxItem } from './BoxItem';
 import { useRef } from 'react';
 import * as htmlToImage from 'html-to-image';
+import { BrowserRouter } from 'react-router-dom';
 
 const theme = createTheme({
   typography: {
@@ -33,19 +34,21 @@ export function App() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Button
-        variant="contained"
-        onClick={handleGenerateCollage}
-        sx={{ position: 'fixed', bottom: 20, right: 20 }}
-      >
-        Згенерувати колаж
-      </Button>
+    <BrowserRouter basename="/sonecko-cards">
+      <ThemeProvider theme={theme}>
+        <Button
+          variant="contained"
+          onClick={handleGenerateCollage}
+          sx={{ position: 'fixed', bottom: 20, right: 20 }}
+        >
+          Згенерувати колаж
+        </Button>
 
-      <CenteredContainer ref={containerRef}>
-        <CardGrid items={items} />
-      </CenteredContainer>
-    </ThemeProvider>
+        <CenteredContainer ref={containerRef}>
+          <CardGrid items={items} />
+        </CenteredContainer>
+      </ThemeProvider>
+    </BrowserRouter>
   )
 }
 
